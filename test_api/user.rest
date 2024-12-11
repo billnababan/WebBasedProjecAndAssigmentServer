@@ -1,0 +1,37 @@
+###
+POST http://localhost:4000/api/v1/register
+Content-Type: application/json
+
+{
+    "username": "zharif", 
+    "password": "zharif123",
+    "confPassword":"zharif123",
+    "role" : "employee"
+}
+
+
+//login admin
+###
+POST http://localhost:4000/api/v1/login
+Content-Type: application/json
+
+{
+    "username": "admin_user",
+    "password": "hashed_password_123"
+}
+
+//login user
+###
+POST http://localhost:4000/api/v1/login
+Content-Type: application/json
+
+{
+    "username": "kakaje",
+    "password": "kakaje123"
+}
+
+
+
+###
+
+DELETE  http://localhost:4000/api/v1/users/7bfc4303-ddf7-4b3b-ae0d-956487934a00

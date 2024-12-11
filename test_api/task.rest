@@ -1,0 +1,5 @@
+###
+GET   http://localhost:4000/api/v1/users/7bfc4303-ddf7-4b3b-ae0d-956487934a00
+
+###
+DELETE http://localhost:4000/api/v1/task/d7845617-66cf-475a-bf82-a4e990c63371
