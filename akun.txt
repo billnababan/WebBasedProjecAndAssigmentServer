@@ -1,5 +1,0 @@
-user akun
-manager
-
-username = antonio
-password = @Anton123
