@@ -1,9 +1,16 @@
-const res200 = (res, data) => {
-  return res.status(200).send(data);
+const successResponse = (res, message, data = {}) => {
+  return res.status(200).json({
+    success: true,
+    message,
+    data,
+  });
 };
 
-const res400 = (res, data) => {
-  return res.status(400).send(data);
+const errorResponse = (res, message, statusCode = 400) => {
+  return res.status(statusCode).json({
+    success: false,
+    message,
+  });
 };
 
-module.exports = { res200, res400 };
+module.exports = { successResponse, errorResponse };

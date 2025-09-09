@@ -3,10 +3,10 @@ POST http://localhost:4000/api/v1/register
 Content-Type: application/json
 
 {
-    "username": "zharif", 
-    "password": "zharif123",
-    "confPassword":"zharif123",
-    "role" : "employee"
+    "username": "admin400", 
+    "password": "admin400",
+    "confPassword":"admin400",
+    "role" : "admin"
 }
 
 
@@ -16,8 +16,8 @@ POST http://localhost:4000/api/v1/login
 Content-Type: application/json
 
 {
-    "username": "admin_user",
-    "password": "hashed_password_123"
+    "username": "admin300",
+    "password": "admin300"
 }
 
 //login user

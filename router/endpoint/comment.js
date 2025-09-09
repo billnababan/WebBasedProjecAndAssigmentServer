@@ -1,15 +1,16 @@
+// router/endpoint/comment.js
 const express = require("express");
-const { authenticationToken } = require("../../middleware/auth");
-const { addComment, getComments, getCommentById, updateComment, deleteComment } = require("../../controller/comment");
+const commentRouter = express.Router();
+const {authenticationToken} = require("../../middleware/auth");
 
-const commentRouter = express();
+const { addComment, getComments, getCommentsByTaskId, getCommentById, updateComment, deleteComment } = require("../../controller/comment");
 
-commentRouter.post("/comment", authenticationToken, addComment);
-commentRouter.get("/comment", authenticationToken, getComments);
-commentRouter.get("/comment/:id", authenticationToken, getCommentById);
-commentRouter.put("/comment/:id", authenticationToken, updateComment);
-commentRouter.delete("/comment/:id", authenticationToken, deleteComment);
+// Comment routes
+commentRouter.post("/comments", authenticationToken, addComment);
+commentRouter.get("/comments", authenticationToken, getComments);
+commentRouter.get("/comments/task/:taskId", authenticationToken, getCommentsByTaskId);
+commentRouter.get("/comments/:id", authenticationToken, getCommentById);
+commentRouter.put("/comments/:id", authenticationToken, updateComment);
+commentRouter.delete("/comments/:id", authenticationToken, deleteComment);
 
-module.exports = {
-  commentRouter,
-};
+module.exports = {commentRouter};

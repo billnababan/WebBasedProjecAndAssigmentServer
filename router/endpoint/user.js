@@ -1,10 +1,23 @@
-const express = require("express");
-const { authenticationToken } = require("../../middleware/auth.js");
-const { updatePassword, DeleteUser } = require("../../controller/user/user.js");
+const express = require("express")
+const { authenticationToken } = require("../../middleware/auth.js")
+const { updatePassword, updateProfile, getProfile, DeleteUser, serveFile, requestPasswordReset, resetPassword } = require("../../controller/user/user.js")
+const uploadMiddleware = require("../../middleware/multer.js")
 
-const usersRouter = express();
+const usersRouter = express.Router()
 
-usersRouter.patch("/users/:uuid", authenticationToken, updatePassword);
-usersRouter.delete("/users/:uuid", DeleteUser);
+// Profile routes
+usersRouter.get("/users/:id/profile", authenticationToken, getProfile)
+usersRouter.put("/users/:id/profile", authenticationToken, uploadMiddleware.single("photo"), updateProfile)
 
-module.exports = usersRouter;
+// Password routes
+usersRouter.patch("/users/password", authenticationToken, updatePassword)
+usersRouter.post("/forgot-password", requestPasswordReset);
+usersRouter.post("/reset-password", resetPassword);
+
+// User management routes
+usersRouter.delete("/users/:uuid", authenticationToken, DeleteUser)
+
+// File serving route - no authentication required for public access
+usersRouter.get("/files/:filename", serveFile)
+
+module.exports = usersRouter
